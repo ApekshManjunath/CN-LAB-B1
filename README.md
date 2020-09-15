@@ -45,6 +45,30 @@ class crc_gen
         div=new int[tot_length];
         rem=new int[tot_length];
         crc=new int[tot_length];
+       
+        for(int i=0;i<data.length;i++)
+            div[i]=data[i];
+       
+        System.out.print("Dividend (after appending 0's) are : ");
+        for(int i=0; i< div.length; i++)
+            System.out.print(div[i]);       
+        System.out.println();
+       
+        for(int j=0; j<div.length; j++){
+              rem[j] = div[j];
+        }
+   
+        rem=divide(div, divisor, rem);
+       
+        for(int i=0;i<div.length;i++)           //append dividend and ramainder
+        {
+            crc[i]=(div[i]^rem[i]);
+        }
+       
+        System.out.println();
+        System.out.println("CRC code : ");   
+        for(int i=0;i<crc.length;i++)
+            System.out.print(crc[i]);
          System.out.println();
         System.out.println("Enter CRC code of "+tot_length+" bits : ");
         for(int i=0; i<crc.length; i++)
